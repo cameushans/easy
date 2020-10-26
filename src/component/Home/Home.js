@@ -8,7 +8,7 @@ const Home = (props)  => {
 
 const nom = props.name.map((el,i) => {
     if(i <10){
-            return <Card nom = {el.name} image= {el.flag.svgFile} key={i} revers={props.reverse} pop={el.population}/>
+            return <Card nom = {el.name} image= {el.flag.svgFile} key={i} revers={props.reverse} pop={el.population} id={el._id}/>
     }
 })
 

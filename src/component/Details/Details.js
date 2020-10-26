@@ -1,8 +1,13 @@
 import React from "react"
 import {Grid} from "@material-ui/core"
 
+
 const Details = (props)  => {
-  return (
+
+
+
+
+          return (
     <Grid container  justify="center">
       <Grid item lg={6}>
                <h1>{props.nom}</h1>
