@@ -1,21 +1,36 @@
 import React from "react"
 import Card from "../Card/Card"
-import {Grid} from "@material-ui/core"
-
+import {Grid, Typography} from "@material-ui/core"
+import { useStyles } from "../Home/Home.Style"
 
 
 const Home = (props)  => {
 
+
+const classes = useStyles()
 const nom = props.name.map((el,i) => {
-    if(i <10){
-            return <Card nom = {el.name} image= {el.flag.svgFile} key={i} revers={props.reverse} pop={el.population} id={el._id}/>
+  
+    if(i <12){
+            return <Card
+            nom = {el.name}
+            image= {el.flag.svgFile} 
+            key={i} 
+            revers={props.reverse} 
+            pop={el.population}
+            capital={el.capital}
+            demonym={el.demonym}
+            id={el._id}
+             />
     }
 })
 
   return (
-    <Grid container style={{marginTop:"6%"}} justify="space-around">
-        {nom}
-    </Grid>
+   <div className={classes.div}>
+        <Typography className={classes.titre} variant="h3" >The World is Yours</Typography>
+        <Grid container className={classes.Gridmargin} justify="space-around">
+            {nom}
+        </Grid>
+    </div>
   );
 }
 
