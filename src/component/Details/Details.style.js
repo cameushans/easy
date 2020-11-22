@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
         backgroundColor:"#6772E5",
         height:"100vh"
          },
-         link:{
+    link:{
             textDecoration:"none"
         },
      gridMargin:{

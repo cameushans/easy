@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Link} from "react-router-dom";
 import {Grid} from "@material-ui/core";
-import { useStyles } from "../Card/card.style";
+import { useStyles } from "../Card/Card.style";
 
 
 export default function ImgMediaCard(props) {

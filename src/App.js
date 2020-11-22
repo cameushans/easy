@@ -31,11 +31,19 @@ const client = new ApolloClient({//instance a new client to perform my queries a
 });
 
 
+console.log(client.cache)
+
+
+/* *** Query Skeleton *** */
+//query AllCountry is the operation name of the query
+//Country (filter,filter){}
+//all country takes parameter for variable
+//country is for the argument
 useEffect(()=>{//load datas everytimes the component is re render 
  client.query({
   query: gql`
-    query Country {
-              Country{
+    query AllCountry {
+              Country (first:10) {
                 name,
                 flag{
                      svgFile

@@ -1,7 +1,7 @@
 import React from "react"
 import Card from "../Card/Card"
 import {Grid, Typography} from "@material-ui/core"
-import { useStyles } from "../Home/Home.Style"
+import { useStyles } from "../Home/Home.style"
 
 
 const Home = (props)  => {
@@ -10,7 +10,6 @@ const Home = (props)  => {
 const classes = useStyles()
 const nom = props.name.map((el,i) => {
   
-    if(i <12){
             return <Card
             nom = {el.name}
             image= {el.flag.svgFile} 
@@ -21,7 +20,7 @@ const nom = props.name.map((el,i) => {
             demonym={el.demonym}
             id={el._id}
              />
-    }
+    
 })
 
   return (
