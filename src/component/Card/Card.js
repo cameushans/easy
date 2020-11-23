@@ -41,7 +41,7 @@ export default function ImgMediaCard(props) {
                         size="small" 
                         variant="contained"
                          color="primary" 
-                        onClick={()=>{}}>
+                        onClick={()=>{props.findById(props.id)}}>
                             En savoir plus
                         </Button>
                     </Link>            

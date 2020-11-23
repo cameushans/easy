@@ -18,6 +18,7 @@ const nom = props.country.map((element,i) => {
             capital={element.capital}
             demonym={element.demonym}
             id={element._id}
+            findById={props.findId}
              />
 
 })

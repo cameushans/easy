@@ -13,69 +13,62 @@ import { useApolloClient } from '@apollo/client';
 
 
 const Details = (props)  => {
-  const client = useApolloClient();
-
-
-/*   const {loading,error,data} = useQuery(ONE_COUNTRY);
- */  const classes = useStyles();
-       const { Country } = client.readQuery({
-      query: gql`
-        query AllCountry{
-          Country (first:10){
-            _id
-            name,
-            flag{
-                svgFile
-            },
-            population,
-            demonym,
-            capital,
-          }
-        }
-      `,
+      const client = useApolloClient();
+      const classes = useStyles();
+      const { Country } = client.readQuery({
+          query: gql`
+            query AllCountry{
+              Country (first:10){
+                _id
+                name,
+                flag{
+                    svgFile
+                },
+                population,
+                demonym,
+                capital,
+              }
+            }
+          `,
     })
-
-    console.log(Country)
-
-    
-
-
  
+     const filteredCountry =  Country.filter( element => element._id === props.id)
 
- return (
-<div>
-  <Grid container   justify="center" alignItems="center" className={classes.taille}>
 
-            <Grid container item lg={4} justify="center" className={classes.gridMargin} >
-                <Card >
-                <CardActionArea>
-                    <CardMedia
-                    component="img"
-                    alt=""
-                    height="400"
-                    image=""
-                    title=""
-                    />
-                </CardActionArea>
-                </Card>
-          </Grid>
-
-          <Grid container  lg={6} item direction="column" alignItems="center"  >
-                <Typography variant="h4" color="primary">Pays: {}</Typography>
-                <Typography  variant="h4"  color="primary">Capitale : {}</Typography>
-                <Typography  variant="h4"  color="primary">Habitants : {}</Typography>
-                <Typography  variant="h4"  color="primary">Population : {} habitants</Typography>
-         </Grid>
-
-         <Grid item container lg={12} justify="center">
-              <Link to="/" className={classes.link}>
-                <Button color="primary" variant="contained" >Liste des Pays</Button>
-            </Link>
-         </Grid>
-       
-   </Grid>
- </div>
-  );
+     return (
+              <div>
+                <Grid container   justify="center" alignItems="center" className={classes.taille}>
+              
+                          <Grid container item lg={4} justify="center" className={classes.gridMargin} >
+                              <Card >
+                              <CardActionArea>
+                                  <CardMedia
+                                  component="img"
+                                  alt=""
+                                  height="400"
+                                  image={filteredCountry[0].flag.svgFile}
+                                  title=""
+                                  />
+                              </CardActionArea>
+                              </Card>
+                        </Grid>
+              
+                        <Grid container  lg={6} item direction="column" alignItems="center"  >
+                              <Typography variant="h4" color="primary">Pays: {filteredCountry[0].name}</Typography>
+                              <Typography  variant="h4"  color="primary">Capitale : {filteredCountry[0].capital}</Typography>
+                              <Typography  variant="h4"  color="primary">Habitants : {filteredCountry[0].demonym}</Typography>
+                              <Typography  variant="h4"  color="primary">Population : {filteredCountry[0].population} habitants</Typography>
+                       </Grid>
+              
+                       <Grid item container lg={12} justify="center">
+                            <Link to="/" className={classes.link}>
+                              <Button color="primary" variant="contained" >Liste des Pays</Button>
+                          </Link>
+                       </Grid>
+                     
+                 </Grid>
+               </div>
+                );
 }
 
 export default Details;
