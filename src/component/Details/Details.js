@@ -7,12 +7,40 @@ import Typography from '@material-ui/core/Typography';
 import {useStyles} from "./Details.style";
 import {Link} from "react-router-dom";
 import Button from '@material-ui/core/Button';
+import {gql} from '@apollo/client';
+import { useApolloClient } from '@apollo/client';
 
 
 
 const Details = (props)  => {
+  const client = useApolloClient();
 
-  const classes = useStyles();
+
+/*   const {loading,error,data} = useQuery(ONE_COUNTRY);
+ */  const classes = useStyles();
+       const { Country } = client.readQuery({
+      query: gql`
+        query AllCountry{
+          Country (first:10){
+            _id
+            name,
+            flag{
+                svgFile
+            },
+            population,
+            demonym,
+            capital,
+          }
+        }
+      `,
+    })
+
+    console.log(Country)
+
+    
+
+
+ 
 
  return (
 <div>
@@ -23,24 +51,24 @@ const Details = (props)  => {
                 <CardActionArea>
                     <CardMedia
                     component="img"
-                    alt={props.nom}
+                    alt=""
                     height="400"
-                    image={props.image}
-                    title={props.nom}
+                    image=""
+                    title=""
                     />
                 </CardActionArea>
                 </Card>
           </Grid>
 
           <Grid container  lg={6} item direction="column" alignItems="center"  >
-                <Typography variant="h4" color="primary">Pays: {props.nom}</Typography>
-                <Typography  variant="h4"  color="primary">Capitale : {props.capital}</Typography>
-                <Typography  variant="h4"  color="primary">Habitants : {props.demonym}</Typography>
-                <Typography  variant="h4"  color="primary">Population : {props.population} habitants</Typography>
+                <Typography variant="h4" color="primary">Pays: {}</Typography>
+                <Typography  variant="h4"  color="primary">Capitale : {}</Typography>
+                <Typography  variant="h4"  color="primary">Habitants : {}</Typography>
+                <Typography  variant="h4"  color="primary">Population : {} habitants</Typography>
          </Grid>
 
          <Grid item container lg={12} justify="center">
-              <Link to="/ " className={classes.link}>
+              <Link to="/" className={classes.link}>
                 <Button color="primary" variant="contained" >Liste des Pays</Button>
             </Link>
          </Grid>

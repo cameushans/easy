@@ -4,18 +4,29 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter } from "react-router-dom";
+import { ApolloClient, InMemoryCache ,ApolloProvider} from '@apollo/client';
+import { HttpLink } from '@apollo/client';
 
 
 
+
+const link = new HttpLink({ uri: 'https://countries-274616.ew.r.appspot.com/'})
+const cache =  new InMemoryCache();//caching data after queries
+const client = new ApolloClient({//instance a new client to perform my queries and passing some options
+  link,
+  cache:cache
+});
     
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-            <BrowserRouter>
+       <BrowserRouter>
+         <ApolloProvider client={client}>
                 <App />
-            </BrowserRouter>
+         </ApolloProvider>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

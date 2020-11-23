@@ -41,8 +41,7 @@ export default function ImgMediaCard(props) {
                         size="small" 
                         variant="contained"
                          color="primary" 
-                        onClick={()=>props.revers(props.nom,props.image,props.pop,props.capital,props.demonym,props.id,  localStorage.setItem('name', props.nom)
-                        )}>
+                        onClick={()=>{}}>
                             En savoir plus
                         </Button>
                     </Link>            

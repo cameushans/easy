@@ -7,21 +7,22 @@ import { useStyles } from "../Home/Home.style"
 const Home = (props)  => {
 
 
+
 const classes = useStyles()
-const nom = props.name.map((el,i) => {
-  
+const nom = props.country.map((element,i) => {
             return <Card
-            nom = {el.name}
-            image= {el.flag.svgFile} 
+            nom = {element.name}
+            image= {element.flag.svgFile} 
             key={i} 
-            revers={props.reverse} 
-            pop={el.population}
-            capital={el.capital}
-            demonym={el.demonym}
-            id={el._id}
+            pop={element.population}
+            capital={element.capital}
+            demonym={element.demonym}
+            id={element._id}
              />
-    
+
 })
+
+
 
   return (
    <div className={classes.div}>
